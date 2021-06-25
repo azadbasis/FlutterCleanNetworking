@@ -1,3 +1,4 @@
+import 'package:clean_networking_series/service/blog_post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -7,6 +8,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  BlogPostService _blogPostService=BlogPostService();
   @override
   void initState() {
     super.initState();
@@ -14,8 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getAllBlogPost() async {
-    var result =
-        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+    var result = await _blogPostService.getAllBlogPosts();
     print(result.body);
   }
 
