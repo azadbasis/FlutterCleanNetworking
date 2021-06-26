@@ -1,4 +1,4 @@
-import 'package:clean_networking_series/service/blog_post_service.dart';
+import 'package:clean_networking_series/repository/data_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,7 +8,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  BlogPostService _blogPostService=BlogPostService();
+  DataRepoImpl dataRepoImpl=DataRepoImpl();
   @override
   void initState() {
     super.initState();
@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getAllBlogPost() async {
-    var result = await _blogPostService.getAllBlogPosts();
+    var result = await dataRepoImpl.getPostData();
     print(result.body);
   }
 
